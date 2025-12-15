@@ -1,0 +1,52 @@
+﻿@model Cuentas.Models.Movimiento
+
+@{
+    ViewData["Title"] = "Eliminar Movimiento";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-danger mb-4">Eliminar Movimiento</h2>
+
+    <div class="card shadow-sm mx-auto" style="max-width: 650px;">
+        <div class="card-body">
+
+            <div class="alert alert-danger text-center">
+                <strong>Atención:</strong> Estás a punto de eliminar este movimiento de manera permanente.
+            </div>
+
+            <h5 class="mb-3">Detalles del movimiento</h5>
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-4">Tipo:</dt>
+                <dd class="col-sm-8">@Model.Tipo</dd>
+
+                <dt class="col-sm-4">Concepto:</dt>
+                <dd class="col-sm-8">@Model.Concepto</dd>
+
+                <dt class="col-sm-4">Monto:</dt>
+                <dd class="col-sm-8">@Model.Monto</dd>
+
+                <dt class="col-sm-4">Fecha:</dt>
+                <dd class="col-sm-8">@Model.Fecha.ToShortDateString()</dd>
+
+                <dt class="col-sm-4">Cuenta:</dt>
+                <dd class="col-sm-8">@Model.IdCuenta</dd>
+            </dl>
+
+            <div class="d-flex justify-content-between mt-4">
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <button type="submit" class="btn btn-danger">
+                        Eliminar definitivamente
+                    </button>
+                </form>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    ← Regresar
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>

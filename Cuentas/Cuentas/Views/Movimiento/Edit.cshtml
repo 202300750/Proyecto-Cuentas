@@ -1,0 +1,76 @@
+﻿@model Cuentas.Models.Movimiento
+
+@{
+    ViewData["Title"] = "Editar Movimiento";
+}
+
+<h1 class="title-dark text-center mb-4">Editar Movimiento</h1>
+
+<div class="edit-container">
+    <div class="card shadow-sm p-4">
+
+        <h5 class="mb-3 text-muted">Datos del movimiento</h5>
+        <hr />
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="Tipo" class="form-label small"></label>
+                <select asp-for="Tipo" class="form-control form-control-sm bg-light">
+                    <option value="1">Depósito</option>
+                    <option value="2">Retiro</option>
+                </select>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Concepto" class="form-label small"></label>
+                <input asp-for="Concepto"
+                       class="form-control form-control-sm bg-light" />
+                <span asp-validation-for="Concepto" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Monto" class="form-label small"></label>
+                <input asp-for="Monto"
+                       class="form-control form-control-sm bg-light" />
+                <span asp-validation-for="Monto" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Fecha" class="form-label small"></label>
+                <input asp-for="Fecha"
+                       type="date"
+                       class="form-control form-control-sm bg-light" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="IdCuenta" class="form-label small"></label>
+                <input asp-for="IdCuenta"
+                       class="form-control form-control-sm bg-light" />
+                <span asp-validation-for="IdCuenta" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary-soft px-4">
+                    Guardar cambios
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary-soft">
+                    ← Regresar
+                </a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

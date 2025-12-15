@@ -1,0 +1,52 @@
+﻿@model Cuentas.Models.Movimiento
+
+@{
+    ViewData["Title"] = "Detalles del Movimiento";
+}
+
+<div class="container mt-4">
+
+    <a asp-action="Index" class="btn btn-secondary mb-3">
+        ← Regresar
+    </a>
+
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h4 class="mb-0">Detalles del Movimiento</h4>
+        </div>
+
+        <div class="card-body p-0">
+
+            <table class="table mb-0">
+                <tbody>
+                    <tr>
+                        <th style="width: 30%;">Tipo:</th>
+                        <td>@Model.Tipo</td>
+                    </tr>
+                    <tr>
+                        <th>Concepto:</th>
+                        <td>@Model.Concepto</td>
+                    </tr>
+                    <tr>
+                        <th>Monto:</th>
+                        <td>
+                            <span class="badge bg-primary fs-6">
+                                @Model.Monto
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Fecha:</th>
+                        <td>@Model.Fecha.ToShortDateString()</td>
+                    </tr>
+                    <tr>
+                        <th>Cuenta:</th>
+                        <td>@Model.IdCuenta</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>

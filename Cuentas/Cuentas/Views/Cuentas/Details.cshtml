@@ -1,0 +1,61 @@
+﻿@model Cuentas.Models.Cuenta
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<div class="container my-4">
+
+    <a asp-action="Index" class="btn btn-secondary btn-sm mb-3">
+        ← Regresar
+    </a>
+
+    <div class="card shadow-sm bg-light bg-opacity-75">
+        <div class="card-header">
+            <h2 class="mb-0">Detalles de la Cuenta</h2>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row mb-2">
+                <div class="col-sm-4 fw-bold">Número:</div>
+                <div class="col-sm-8">@Model.numero</div>
+            </div>
+
+            <hr />
+
+            <div class="row mb-2">
+                <div class="col-sm-4 fw-bold">Descripción:</div>
+                <div class="col-sm-8">@Model.descripcion</div>
+            </div>
+
+            <hr />
+
+            <div class="row mb-2">
+                <div class="col-sm-4 fw-bold">Créditos:</div>
+                <div class="col-sm-8">
+                    <span class="badge bg-success">@Model.creditos</span>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row mb-2">
+                <div class="col-sm-4 fw-bold">Débitos:</div>
+                <div class="col-sm-8">
+                    <span class="badge bg-danger">@Model.debitos</span>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row mb-3">
+                <div class="col-sm-4 fw-bold">Balance:</div>
+                <div class="col-sm-8">
+                    <span class="badge bg-primary fs-5">@Model.balance</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Cuentas.Models.Cuenta>
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1 class="title-dark mb-3">Crear Cuenta</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-dark-soft text-white">Crear Nueva Cuenta</a>
+</p>
+
+<div class="table-container">
+    <table class="table table-hover shadow-sm"
+           style="background: #ffffff; border-radius: 10px; overflow:hidden;">
+        <thead class="table-light">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.numero)</th>
+                <th>@Html.DisplayNameFor(model => model.descripcion)</th>
+                <th>@Html.DisplayNameFor(model => model.creditos)</th>
+                <th>@Html.DisplayNameFor(model => model.debitos)</th>
+                <th>Estado</th>
+                <th class="fw-bold text-primary">Balance</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.numero)</td>
+                    <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.creditos)</td>
+                    <td>@Html.DisplayFor(modelItem => item.debitos)</td>
+
+                    <!-- Estado según el balance -->
+                    <td>
+                        @(item.balance < 0
+                                            ? "Inactivo"
+                                            : "Activo")
+                </td>
+
+                    <td class="fw-bold text-primary">
+                        @Html.DisplayFor(modelItem => item.balance)
+                    </td>
+
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.Id"
+                           class="btn btn-warning btn-sm me-1">Editar</a>
+
+                        <a asp-action="Details" asp-route-id="@item.Id"
+                           class="btn btn-info btn-sm text-white me-1">Detalles</a>
+
+                        <a asp-action="Delete" asp-route-id="@item.Id"
+                           class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+                        }
+        </tbody>
+    </table>
